@@ -79,7 +79,7 @@
 
 " folding commands.
 " :set foldcolumn=2
-" :set foldmethod=indent
+:autocmd FileType html,php,xml set foldmethod=indent
 
 " tab autocompletion in the command space
 :set wildmenu
