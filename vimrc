@@ -100,3 +100,7 @@ map <ESC>[D <C-Left>
 map <ESC>[C <C-Right>
 map! <ESC>[D <C-Left>
 map! <ESC>[C <C-Right>
+
+" So that the IME does not interfere with VIM.
+:set iminsert=0
+:set imsearch=0
