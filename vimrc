@@ -104,3 +104,12 @@ map! <ESC>[C <C-Right>
 " So that the IME does not interfere with VIM.
 :set iminsert=0
 :set imsearch=0
+
+" Set the gui font
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
