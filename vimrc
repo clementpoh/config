@@ -24,7 +24,7 @@
 :set showmatch
 
 " width of the screen in columns
-:set textwidth=80
+:autocmd FileType txt,md set textwidth=80
 " don't wrap long lines
 :set nowrap
 " character to mark lines that exceed 80 characters
