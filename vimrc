@@ -93,7 +93,7 @@
 :autocmd FileType txt,md set spell
 
 " Add '_' as a word separator.
-:set iskeyword-=_
+" :set iskeyword-=_
 
 " So that ctrl + arrow works on unix through putty.
 map <ESC>[D <C-Left>
