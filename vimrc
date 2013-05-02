@@ -23,8 +23,6 @@
 " show matching bracket briefly
 :set showmatch
 
-" width of the screen in columns
-:autocmd FileType txt,md set textwidth=80
 " don't wrap long lines
 :set nowrap
 " character to mark lines that exceed 80 characters
@@ -32,10 +30,10 @@
 
 " indent on new line is equal to indent on previous line
 :set smartindent
-" tabstops set to 4 spaces
-:set tabstop=4
 " tabstops are converted to spaces, ensuring the file always looks the same.
 :set expandtab
+" tabstops set to 4 spaces
+:set softtabstop=4
 " width of an indent level
 :set shiftwidth=4
 
@@ -47,8 +45,10 @@
 :colorscheme koehler
 
 " filetype specific commands.
+" Tto check what filetype it is ':set filetype?'
 :filetype on
 :autocmd FileType make :set noexpandtab
+:autocmd FileType vb :set noexpandtab
 :autocmd FileType c :set cindent
 
 " these are abbreviations for convenience.
@@ -89,11 +89,12 @@
 :autocmd FileType html,php,txt,xml set mps+=<:>
 
 " set the spell checker on.
-":set spell
-:autocmd FileType txt,md set spell
+au BufNewFile,BufRead *.txt,*.md setlocal spell
+" width of the screen in columns
+au BufNewFile,BufRead *.txt,*.md setlocal textwidth=80
 
 " Add '_' as a word separator.
-:set iskeyword-=_
+" :set iskeyword-=_
 
 " So that ctrl + arrow works on unix through putty.
 map <ESC>[D <C-Left>
