@@ -86,12 +86,13 @@
 :set wildmode=longest,full
 
 " matches '<' and '>', mainly for use when writing HTML.
-:autocmd FileType html,php,txt,xml set mps+=<:>
+:autocmd FileType html,php,xml set mps+=<:>
 
 " set the spell checker on.
-au BufNewFile,BufRead *.txt,*.md setlocal spell
+autocmd BufNewFile,BufRead *.txt,*.md set spell
+autocmd FileType plaintex,html,php,xml set spell
 " width of the screen in columns
-au BufNewFile,BufRead *.txt,*.md setlocal textwidth=80
+autocmd BufNewFile,BufRead *.txt,*.md set textwidth=80
 
 " Add '_' as a word separator.
 " :set iskeyword-=_
