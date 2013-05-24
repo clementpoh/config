@@ -33,7 +33,7 @@
 " tabstops are converted to spaces, ensuring the file always looks the same.
 :set expandtab
 " tabstops set to 4 spaces
-:set softtabstop=4
+:set tabstop=4
 " width of an indent level
 :set shiftwidth=4
 
