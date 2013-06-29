@@ -80,6 +80,7 @@
 " folding commands.
 " :set foldcolumn=2
 :autocmd FileType html,php,xml set foldmethod=indent
+:autocmd FileType python set foldmethod=indent
 
 " tab autocompletion in the command space
 :set wildmenu
