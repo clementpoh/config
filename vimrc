@@ -43,7 +43,9 @@ set smarttab
 set formatoptions=croqn2
 
 " syntax colouration and highlighting
-syntax on
+"let g:solarized_termcolors=256
+syntax enable
+"set background=dark
 colorscheme jellybeans
 
 " filetype specific commands.
