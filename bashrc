@@ -2,16 +2,10 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export http_proxy='http://10.42.253.9:80'
-export https_proxy='https://10.42.253.9:80'
-export EDITOR='/usr/bin/vim'
+# export PATH="$PATH:$HOME/.cabal/bin"
+export PYTHONSTARTUP=~/.pystartup
 
-export PYTHONSTARTUP='~/.pystartup'
-
-#"\e[A": history-search-backward
-#"\e[B": history-search-forward
-set show-all-if-ambiguous on
-set completion-ignore-case on
+export TERM='xterm-256color'
 
 ########### Pretty Colours ##########
 txtblk='\[\e[0;30m\]' # Black - Regular

@@ -44,8 +44,7 @@ set formatoptions=croqn2
 
 " syntax colouration and highlighting
 syntax on
-set background=dark
-colorscheme solarized
+colorscheme jellybeans
 
 " filetype specific commands.
 " Tto check what filetype it is ':set filetype?'
