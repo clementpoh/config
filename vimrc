@@ -44,7 +44,8 @@ set formatoptions=croqn2
 
 " syntax colouration and highlighting
 syntax on
-colorscheme koehler
+set background=dark
+colorscheme solarized
 
 " filetype specific commands.
 " Tto check what filetype it is ':set filetype?'
