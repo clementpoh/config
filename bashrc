@@ -5,7 +5,12 @@
 # export PATH="$PATH:$HOME/.cabal/bin"
 export PYTHONSTARTUP=~/.pystartup
 
+# Make sure that the term is at least a 256 color term.
 export TERM='xterm-256color'
+
+# Page up and page down bring up previous bash commands.
+bind '"\e[5~": history-search-backward'
+bind '"\e[6~": history-search-forward'
 
 ########### Pretty Colours ##########
 txtblk='\[\e[0;30m\]' # Black - Regular
@@ -47,6 +52,10 @@ case $- in
     *i*) ;;
       *) return;;
 esac
+
+# This determines whether multi-line commands are stored in the history as a
+# single command (on) or not (off; default)
+shopt -s cmdhist
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
