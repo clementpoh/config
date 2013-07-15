@@ -113,6 +113,9 @@ set imsearch=0
 filetype plugin on
 filetype indent on
 
+" limit size of omnicompletion menu
+" set pumheight=12
+
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Neo complete options
 """""""""""""""""""""""""""""""""""""""""""""""""""
