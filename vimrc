@@ -100,11 +100,8 @@ autocmd FileType plaintex,html,php,xml set spell
 " Add '_' as a word separator.
 " :set iskeyword-=_
 
-" So that ctrl + arrow works on unix through putty.
-map <ESC>[D <C-Left>
-map <ESC>[C <C-Right>
-map! <ESC>[D <C-Left>
-map! <ESC>[C <C-Right>
+" map ;; to Escape
+imap ;; <Esc>
 
 " So that the IME does not interfere with VIM.
 set iminsert=0
