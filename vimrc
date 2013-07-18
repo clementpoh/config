@@ -100,8 +100,10 @@ autocmd FileType plaintex,html,php,xml set spell
 " Add '_' as a word separator.
 " :set iskeyword-=_
 
-" map ;; to Escape
+" map ;; to Escape in insert mode.
 imap ;; <Esc>
+imap [5~ <PageUp>
+imap [6~ <PageDown>
 
 " So that the IME does not interfere with VIM.
 set iminsert=0

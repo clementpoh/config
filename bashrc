@@ -9,8 +9,10 @@ export PYTHONSTARTUP=~/.pystartup
 export TERM='xterm-256color'
 
 # Page up and page down bring up previous bash commands.
-bind '"\e[5~": history-search-backward'
-bind '"\e[6~": history-search-forward'
+#bind '"\e[5~": history-search-backward'
+#bind '"\e[6~": history-search-forward'
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 
 ########### Pretty Colours ##########
 txtblk='\[\e[0;30m\]' # Black - Regular
