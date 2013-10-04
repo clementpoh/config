@@ -1,0 +1,27 @@
+# Config files
+
+https://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/
+
+## Adding the sub-project as a remote
+Adding the subtree as a remote allows us to refer to it in shorter form:
+
+    git remote add -f vim-surround https://bitbucket.org/vim-plugins-mirror/vim-surround.git
+
+Now we can add the subtree (as before), but now we can refer to the remote in short form:
+
+    git subtree add --prefix .vim/bundle/vim-surround tpope-vim-surround master --squash
+
+The command to update the sub-project at a later date becomes:
+
+    git fetch vim-surround master
+    git subtree pull --prefix .vim/bundle/tpope-vim-surround tpope-vim-surround master --squash
+
+
+## The quick and dirty way without remote tracking
+If you just want a couple of one liners to cut and paste just read this paragraph.
+
+First add the subtree at a specified prefix folder:
+git subtree add --prefix .vim/bundle/tpope-vim-surround https://bitbucket.org/vim-plugins-mirror/vim-surround.git master --squash
+
+if after a while you want to update the code of the plugin from the upstream repository you can just subtree pull:
+git subtree pull --prefix .vim/bundle/tpope-vim-surround https://bitbucket.org/vim-plugins-mirror/vim-surround.git master --squash
