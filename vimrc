@@ -101,9 +101,13 @@ autocmd FileType plaintex,html,php,xml set spell
 " :set iskeyword-=_
 
 " map ;; to Escape in insert mode.
-imap ;; <Esc>
+" imap ;; <Esc>
 imap [5~ <PageUp>
 imap [6~ <PageDown>
+
+" Pressing F12 will refresh the syntax highlighting
+imap <F12> <C-o>:syntax sync fromstart<CR>
+map <F12> <Esc>:syntax sync fromstart<CR>
 
 " So that the IME does not interfere with VIM.
 set iminsert=0
@@ -125,6 +129,11 @@ execute pathogen#infect()
 " Tagbar options
 """""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" xmledit
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let xml_use_html = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Nerdtree options
@@ -177,3 +186,5 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+filetype plugin on
