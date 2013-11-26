@@ -64,7 +64,7 @@ iab #d #define
 set nobackup
 
 " Automatically change directory to the file in the current window.
-set autochdir
+" set autochdir
 
 "ignores the case in search patterns.
 set ignorecase
@@ -118,7 +118,6 @@ filetype indent on
 
 " limit size of omnicompletion menu
 " set pumheight=12
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen
