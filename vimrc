@@ -85,6 +85,7 @@ set nu
 "autocmd FileType htmldjango set foldmethod=indent
 "autocmd FileType python set foldmethod=indent
 set foldmethod=indent
+set foldlevel=4
 
 " tab autocompletion in the command space
 set wildmenu
