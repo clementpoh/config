@@ -49,6 +49,27 @@ bakcyn='\[\e[46m\]'   # Cyan
 bakwht='\[\e[47m\]'   # White
 txtrst='\[\e[0m\]'    # Text Reset
 
+# Establish what directory the script is in.
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  TARGET="$(readlink "$SOURCE")"
+  if [[ $SOURCE == /* ]]; then
+    # echo "SOURCE '$SOURCE' is an absolute symlink to '$TARGET'"
+    SOURCE="$TARGET"
+  else
+    DIR="$( dirname "$SOURCE" )"
+    # echo "SOURCE '$SOURCE' is a relative symlink to '$TARGET' (relative to '$DIR')"
+    SOURCE="$DIR/$TARGET" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+  fi
+done
+# echo "SOURCE is '$SOURCE'"
+RDIR="$( dirname "$SOURCE" )"
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+# Add $DIR to the path
+export PATH="$PATH:$DIR/bin"
+
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
