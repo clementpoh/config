@@ -154,7 +154,7 @@ map <F9> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Togglelist options
 """""""""""""""""""""""""""""""""""""""""""""""""""
-map <F10> :ToggleQuickFixList<CR>
+map <F10> :call ToggleQuickFixList()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Neo complete options
