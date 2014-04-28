@@ -43,7 +43,7 @@ set smarttab
 set formatoptions=croqn2
 
 " syntax colouration and highlighting
-"let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
 syntax enable
 "set background=dark
 colorscheme lucius
@@ -119,6 +119,17 @@ filetype indent on
 
 " limit size of omnicompletion menu
 " set pumheight=12
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Pathogen
