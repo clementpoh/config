@@ -6,13 +6,17 @@ call vundle#rc()
 
 " Plugins
 Plugin 'gmarik/Vundle.vim'
+
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-fugitive'
+
 Plugin 'shougo/neocomplcache.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
 
 Plugin 'edsono/vim-matchit'
 Plugin 'gregsexton/MatchTag'
@@ -155,7 +159,7 @@ set imsearch=0
 " set pumheight=12
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" vim-airline
+" Vim Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
 
@@ -171,6 +175,18 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Tagbar options
 """""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntactic options
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+
+" Use pylint 
+let g:syntastic_python_checkers = ['pylint']
+
+" Use jshint (uses ~/.jshintrc)
+let g:syntastic_javascript_checkers = ['jshint']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Nerdtree options
