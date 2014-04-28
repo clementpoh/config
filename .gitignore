@@ -3,3 +3,6 @@
 *.sqlite3
 *.css
 *.scssc
+
+vim/bundle/**
+~/bundle/vundle

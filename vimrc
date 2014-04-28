@@ -5,11 +5,12 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Plugins
-Plugin 'gmarik/bundle'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-plugin 'shougo/neocomplcache.vim'
+Plugin 'shougo/neocomplcache.vim'
 Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 
@@ -25,12 +26,13 @@ Plugin 'othree/html5-syntax.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'tpope/vim-haml'
-Plugin 'jQuery'
+Plugin 'vim-scripts/jQuery'
 
 " Themes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jonathanfilip/vim-lucius'
 
+let g:vundle_lazy_load=1
 call vundle#end()
 filetype plugin indent on
 
@@ -169,11 +171,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " Tagbar options
 """""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" xmledit
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-let xml_use_html = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Nerdtree options
