@@ -1,3 +1,39 @@
+" Settings for the Vundle plugin manager.
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Plugins
+Plugin 'gmarik/bundle'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+plugin 'shougo/neocomplcache.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'bling/vim-airline'
+
+Plugin 'edsono/vim-matchit'
+Plugin 'gregsexton/MatchTag'
+
+Plugin 'majutsushi/tagbar'
+Plugin 'milkypostman/vim-togglelist'
+
+" Syntax
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'othree/html5-syntax.vim'
+Plugin 'tpope/vim-markdown'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'tpope/vim-haml'
+Plugin 'jQuery'
+
+" Themes
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'jonathanfilip/vim-lucius'
+
+call vundle#end()
+filetype plugin indent on
+
 " Sets the encoding to the utf-8 character set
 set enc=utf-8
 
@@ -51,7 +87,6 @@ LuciusBlack
 
 " filetype specific commands.
 " Tto check what filetype it is ':set filetype?'
-filetype on
 autocmd FileType make :set noexpandtab
 autocmd FileType vb :set noexpandtab
 autocmd FileType c :set cindent
@@ -114,9 +149,6 @@ map <F12> <Esc>:syntax sync fromstart<CR>
 set iminsert=0
 set imsearch=0
 
-filetype plugin on
-filetype indent on
-
 " limit size of omnicompletion menu
 " set pumheight=12
 
@@ -132,11 +164,6 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pathogen
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-execute pathogen#infect()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar options
@@ -204,5 +231,3 @@ autocmd FileType html,mkd,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-filetype plugin on

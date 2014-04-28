@@ -1,36 +1,3 @@
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/xmledit"]
-	path = vim/bundle/xmledit
-	url = https://github.com/sukima/xmledit.git
-[submodule "vim/bundle/emmet-vim"]
-	path = vim/bundle/emmet-vim
-	url = https://github.com/mattn/emmet-vim.git
-[submodule "vim/bundle/matchTag"]
-	path = vim/bundle/matchTag
-	url = https://github.com/gregsexton/MatchTag.git
-[submodule "vim/bundle/jshint2.vim"]
-	path = vim/bundle/jshint2.vim
-	url = https://github.com/Shutnik/jshint2.vim.git
-[submodule "vim/bundle/vim-togglelist"]
-	path = vim/bundle/vim-togglelist
-	url = https://github.com/milkypostman/vim-togglelist.git
-[submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline.git
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "fonts/powerline-fonts"]
 	path = fonts/powerline-fonts
 	url = https://github.com/Lokaltog/powerline-fonts.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
-[submodule "vim/bundle/vim-matchit"]
-	path = vim/bundle/vim-matchit
-	url = https://github.com/edsono/vim-matchit.git
