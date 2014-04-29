@@ -25,6 +25,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'milkypostman/vim-togglelist'
 
 Plugin 'marijnh/tern_for_vim'
+Plugin 'sjl/gundo.vim'
 
 " Syntax
 Plugin 'hail2u/vim-css3-syntax'
@@ -182,16 +183,23 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 nmap <F8> :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" Syntactic options
+" Gundo options
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F7> :GundoToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Syntastic options
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list = 1
 
 let g:syntastic_error_symbol = '✖'
+let g:syntastic_warning_symbol = '!'
 
 " Use pylint
 let g:syntastic_python_checkers = ['pylint']
+" let g:syntastic_python_pylint_quiet_messages = { 'type' : 'style' }
 
 " Use jshint (uses ~/.jshintrc)
 let g:syntastic_javascript_checkers = ['jshint']
