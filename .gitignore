@@ -5,4 +5,4 @@
 *.scssc
 
 vim/bundle/**
-!vim/bundle/Vundle.vim
+!vim/bundle/vundle

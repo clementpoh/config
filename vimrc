@@ -1,7 +1,7 @@
 " Settings for the Vundle plugin manager.
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " Plugins
@@ -31,6 +31,7 @@ Plugin 'tpope/vim-markdown'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'tpope/vim-haml'
 Plugin 'vim-scripts/jQuery'
+Plugin 'hdima/python-syntax'
 
 " Themes
 Plugin 'altercation/vim-colors-solarized'
