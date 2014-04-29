@@ -1,7 +1,7 @@
 " Settings for the Vundle plugin manager.
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " Plugins
@@ -169,7 +169,7 @@ endif
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar options
@@ -181,8 +181,11 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
+let g:syntastic_always_populate_loc_list = 1
 
-" Use pylint 
+let g:syntastic_error_symbol = '✖'
+
+" Use pylint
 let g:syntastic_python_checkers = ['pylint']
 
 " Use jshint (uses ~/.jshintrc)
@@ -196,7 +199,8 @@ map <F9> :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Togglelist options
 """""""""""""""""""""""""""""""""""""""""""""""""""
-map <F10> :call ToggleQuickFixList()<CR>
+map <F10> :call ToggleQuickfixList()<CR>
+map <F11> :call ToggleLocationList()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Neo complete options

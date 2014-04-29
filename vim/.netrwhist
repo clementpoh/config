@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/cpoh/ids/reports/forms'
 let g:netrw_dirhist_2='/home/cpoh/forceNetFed/source/assets/js/plugins'
 let g:netrw_dirhist_3='/home/cpoh/forcenet/forceNetFed/source/assets/js/plugins'
 let g:netrw_dirhist_4='/home/cpoh/forcenet/forceNetFed/source/assets/css'
 let g:netrw_dirhist_5='/home/cpoh/forcenet/forceNetFed/source/assets/css/modules'
 let g:netrw_dirhist_6='/home/cpoh/forcenet/forceNetFed/source/partials/public-site'
+let g:netrw_dirhist_7='/home/cpoh/repos/config/vim'
