@@ -1,14 +1,14 @@
 " Settings for the Vundle plugin manager.
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
 " Plugins
 Plugin 'gmarik/Vundle.vim'
 
 Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-sleuth'
+" Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-fugitive'
 
 Plugin 'shougo/neocomplcache.vim'
@@ -24,13 +24,15 @@ Plugin 'gregsexton/MatchTag'
 Plugin 'majutsushi/tagbar'
 Plugin 'milkypostman/vim-togglelist'
 
+Plugin 'marijnh/tern_for_vim'
+
 " Syntax
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'othree/html5-syntax.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jQuery'
 Plugin 'tpope/vim-haml'
-Plugin 'vim-scripts/jQuery'
 Plugin 'hdima/python-syntax'
 
 " Themes
@@ -163,6 +165,7 @@ set imsearch=0
 " Vim Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
+let g:bufferline_echo = 0
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
