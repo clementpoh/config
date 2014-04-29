@@ -19,7 +19,7 @@ Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 
 Plugin 'edsono/vim-matchit'
-Plugin 'gregsexton/MatchTag'
+Plugin 'valloric/MatchTagAlways'
 
 Plugin 'majutsushi/tagbar'
 Plugin 'milkypostman/vim-togglelist'
@@ -40,7 +40,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'jonathanfilip/vim-lucius'
 
-let g:vundle_lazy_load=1
+let g:vundle_lazy_load=0
 call vundle#end()
 filetype plugin indent on
 
@@ -95,12 +95,6 @@ syntax enable
 colorscheme lucius
 LuciusBlack
 
-" filetype specific commands.
-" Tto check what filetype it is ':set filetype?'
-autocmd FileType make :set noexpandtab
-autocmd FileType vb :set noexpandtab
-autocmd FileType c :set cindent
-
 " these are abbreviations for convenience.
 iab #i #include
 iab #d #define
@@ -126,22 +120,12 @@ set nu
 
 " folding commands.
 " :set foldcolumn=2
-"autocmd FileType html,php,xml set foldmethod=indent
-"autocmd FileType htmldjango set foldmethod=indent
-"autocmd FileType python set foldmethod=indent
 set foldmethod=indent
 set foldlevel=4
 
 " tab autocompletion in the command space
 set wildmenu
 set wildmode=longest,full
-
-" matches '<' and '>', mainly for use when writing HTML.
-autocmd FileType html,php,xml set mps+=<:>
-
-" set the spell checker on.
-autocmd BufNewFile,BufRead *.txt,*.md set spell
-autocmd FileType plaintex,html,php,xml set spell
 
 " Add '_' as a word separator.
 " :set iskeyword-=_
@@ -161,6 +145,20 @@ set imsearch=0
 
 " limit size of omnicompletion menu
 " set pumheight=12
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Filetype Specific Commands
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" To check what filetype it is ':set filetype?'
+autocmd FileType make :set noexpandtab
+autocmd FileType c :set cindent
+
+" matches '<' and '>', mainly for use when writing HTML.
+autocmd FileType html,php,xml set mps+=<:> shiftwidth=2 tabstop=2
+
+" set the spell checker on.
+" autocmd BufNewFile,BufRead *.txt,*.md set spell
+autocmd FileType plaintex,html,php,xml set spell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Airline
