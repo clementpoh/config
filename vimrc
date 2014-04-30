@@ -32,7 +32,6 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'othree/html5-syntax.vim'
 Plugin 'tpope/vim-markdown'
 Plugin 'jelera/vim-javascript-syntax'
-Plugin 'jQuery'
 Plugin 'tpope/vim-haml'
 Plugin 'hdima/python-syntax'
 
@@ -91,13 +90,10 @@ set formatoptions=croqn2
 " syntax colouration and highlighting
 " let g:solarized_termcolors=256
 syntax enable
-"set background=dark
+" set background=dark
+" colorscheme solarized
 colorscheme lucius
 LuciusBlack
-
-" these are abbreviations for convenience.
-iab #i #include
-iab #d #define
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup
