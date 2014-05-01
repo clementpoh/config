@@ -90,10 +90,11 @@ set formatoptions=croqn2
 " syntax colouration and highlighting
 " let g:solarized_termcolors=256
 syntax enable
-" set background=dark
-" colorscheme solarized
-colorscheme lucius
-LuciusBlack
+set background=dark
+colorscheme solarized
+
+" colorscheme lucius
+" LuciusBlack
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup
@@ -154,7 +155,7 @@ autocmd FileType html,php,xml set mps+=<:> shiftwidth=2 tabstop=2
 
 " set the spell checker on.
 " autocmd BufNewFile,BufRead *.txt,*.md set spell
-autocmd FileType plaintex,html,php,xml set spell
+" autocmd FileType plaintex,html,php,xml set spell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Airline
