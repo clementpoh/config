@@ -172,6 +172,13 @@ let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
+" CtrlP options
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set this to 1 to set regexp search as the default: >
+  let g:ctrlp_regexp = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar options
 """""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F8> :TagbarToggle<CR>
@@ -189,7 +196,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list = 1
 
 let g:syntastic_error_symbol = '✖'
-let g:syntastic_warning_symbol = '!'
+let g:syntastic_warning_symbol = '❢'
 
 " Use pylint
 let g:syntastic_python_checkers = ['pylint']
