@@ -88,13 +88,15 @@ set smarttab
 set formatoptions=croqn2
 
 " syntax colouration and highlighting
+" Solarized
 " let g:solarized_termcolors=256
-syntax enable
-set background=dark
-colorscheme solarized
+" syntax enable
+" set background=dark
+" colorscheme solarized
 
-" colorscheme lucius
-" LuciusBlack
+" Lucius
+colorscheme lucius
+LuciusBlackLowContrast
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup
