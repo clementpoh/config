@@ -10,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 " Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-unimpaired'
 
 Plugin 'shougo/neocomplcache.vim'
 Plugin 'scrooloose/syntastic'
@@ -153,7 +154,7 @@ autocmd FileType make :set noexpandtab
 autocmd FileType c :set cindent
 
 " matches '<' and '>', mainly for use when writing HTML.
-autocmd FileType html,php,xml set mps+=<:> shiftwidth=2 tabstop=2
+autocmd FileType html,htmldjango,php,xml set mps+=<:> shiftwidth=2 tabstop=2
 
 " set the spell checker on.
 " autocmd BufNewFile,BufRead *.txt,*.md set spell
