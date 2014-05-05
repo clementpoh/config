@@ -154,7 +154,7 @@ autocmd FileType make :set noexpandtab
 autocmd FileType c :set cindent
 
 " matches '<' and '>', mainly for use when writing HTML.
-autocmd FileType html,htmldjango,php,xml set mps+=<:> shiftwidth=2 tabstop=2
+autocmd FileType html,eruby,htmldjango,php,xml set mps+=<:> shiftwidth=2 tabstop=2
 
 " set the spell checker on.
 " autocmd BufNewFile,BufRead *.txt,*.md set spell
@@ -174,6 +174,17 @@ endif
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" MatchTagAlways
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'eruby' : 1,
+    \ 'htmldjango' : 1,}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " CtrlP options
