@@ -3,6 +3,8 @@
 *.sqlite3
 *.css
 *.scssc
+*.netrwhist
 
 vim/bundle/**
-!vim/bundle/vundle
+!vim/bundle/Vundle.vim
+!vim/bundle/Vundle.vim/*
