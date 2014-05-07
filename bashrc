@@ -63,12 +63,15 @@ while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symli
   else
     DIR="$( dirname "$SOURCE" )"
     # echo "SOURCE '$SOURCE' is a relative symlink to '$TARGET' (relative to '$DIR')"
-    SOURCE="$DIR/$TARGET" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+    # if $SOURCE is a relative symlink, we need to resolve it relative to the
+    # path where the symlink file was located
+    SOURCE="$DIR/$TARGET"
   fi
 done
-# echo "SOURCE is '$SOURCE'"
+
 RDIR="$( dirname "$SOURCE" )"
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+# echo "SOURCE is '$SOURCE'"
 
 # Add $DIR to the path
 export PATH="$PATH:$DIR/bin"
