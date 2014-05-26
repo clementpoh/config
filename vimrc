@@ -215,6 +215,7 @@ let g:syntastic_warning_symbol = '❢'
 
 " Use pylint
 let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 " let g:syntastic_python_pylint_quiet_messages = { 'type' : 'style' }
 
 " Use jshint (uses ~/.jshintrc)
