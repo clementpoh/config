@@ -13,6 +13,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
 
 Plugin 'shougo/neocomplcache.vim'
+Plugin 'shougo/vimproc.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'scrooloose/nerdtree'
@@ -29,6 +30,7 @@ Plugin 'marijnh/tern_for_vim'
 Plugin 'sjl/gundo.vim'
 
 " Syntax
+Plugin 'eagletmt/ghcmod-vim'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'othree/html5-syntax.vim'
 Plugin 'tpope/vim-markdown'
