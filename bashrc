@@ -7,7 +7,7 @@
 # export https_proxy='https://10.42.253.9:80'
 
 export PATH="$PATH:$HOME/.cabal/bin"
-export PYTHONSTARTUP=~/.pystartup
+export PYTHONSTARTUP="~/.pystartup"
 
 # Make sure that the term is at least a 256 color term.
 export TERM='xterm-256color'

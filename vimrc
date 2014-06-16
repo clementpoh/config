@@ -7,14 +7,19 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Plugins
-" Plugin 'gmarik/Vundle.vim'
-" Plugin 'tpope/vim-sleuth'
-" Plugin 'kien/ctrlp.vim'
-
 NeoBundleFetch 'shougo/neobundle'
 NeoBundle 'shougo/neocomplcache.vim'
 NeoBundle 'shougo/neomru.vim'
 NeoBundle 'shougo/unite.vim'
+
+NeoBundle 'Shougo/vimproc.vim', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-fugitive'
@@ -35,12 +40,19 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 
 " Haskell
-NeoBundle 'lukerandall/haskellmode-vim'
-NeoBundle 'eagletmt/ghcmod-vim'
-NeoBundle 'neco-ghc'
+NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload':{'filetypes':['haskell']}}
+NeoBundleLazy 'eagletmt/neco-ghc', {'autoload':{'filetypes':['haskell']}}
 
 " JS
-NeoBundle 'marijnh/tern_for_vim'
+NeoBundleLazy 'marijnh/tern_for_vim', {
+    \ 'autoload' : {'filetypes':['javascript']},
+    \ 'build' : {
+    \     'windows' : 'npm intall',
+    \     'cygwin' : 'npm install',
+    \     'mac' : 'npm install',
+    \     'unix' : 'npm install',
+    \    },
+    \ }
 
 " Syntax
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
@@ -105,14 +117,8 @@ set formatoptions=croqn2
 
 " syntax colouration and highlighting
 " Solarized
-" let g:solarized_termcolors=256
-" syntax enable
 set background=dark
 colorscheme solarized
-
-" Lucius
-" colorscheme lucius
-"LuciusBlackLowContrast
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup
@@ -147,8 +153,6 @@ set wildmode=longest,full
 
 " map ;; to Escape in insert mode.
 " imap ;; <Esc>
-imap [5~ <PageUp>
-imap [6~ <PageDown>
 
 " Pressing F12 will refresh the syntax highlighting
 imap <F12> <C-o>:syntax sync fromstart<CR>
@@ -165,15 +169,19 @@ set imsearch=0
 " Filetype Specific Commands
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " To check what filetype it is ':set filetype?'
-autocmd FileType make :set noexpandtab
-autocmd FileType c :set cindent
+autocmd FileType make setlocal noexpandtab
+autocmd FileType c setlocal cindent
 
 " matches '<' and '>', mainly for use when writing HTML.
-autocmd FileType html,eruby,htmldjango,php,xml set mps+=<:> shiftwidth=2 tabstop=2
+autocmd FileType html,eruby,htmldjango,php,xml setlocal mps+=<:> shiftwidth=2 tabstop=2
+
+" Look up the type of the haskell expression under the cursor
+autocmd FileType haskell nnoremap <leader>t :GhcModType<CR>
+autocmd FileType haskell nnoremap <leader>c :GhcModTypeClear<CR>
+autocmd FileType haskell nnoremap <leader>i :GhcModTypeClear<CR>
 
 " set the spell checker on.
-" autocmd BufNewFile,BufRead *.txt,*.md set spell
-" autocmd FileType plaintex,html,php,xml set spell
+" autocmd FileType text,markdown,plaintex,html,php,xml set spell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite
@@ -195,11 +203,11 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 " File searching like ctrlp.vim
-nnoremap [unite]p :Unite -buffer-name=files  -start-insert file_rec/async:!<cr>
-nnoremap [unite]/ :Unite -buffer-name=grep   grep:!<cr>
-nnoremap [unite]b :Unite -quick-match        buffer<cr>
-nnoremap [unite]y :Unite -buffer-name=yank   history/yank<cr>
-nnoremap [unite]r :Unite -buffer-name=mru    file_mru<cr>
+nnoremap [unite]p :Unite -buffer-name=files  -start-insert file_rec/async:!<CR>
+nnoremap [unite]/ :Unite -buffer-name=grep   grep:!<CR>
+nnoremap [unite]b :Unite -quick-match        buffer<CR>
+nnoremap [unite]y :Unite -buffer-name=yank   history/yank<CR>
+nnoremap [unite]r :Unite -buffer-name=mru    file_mru<CR>
 
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
@@ -242,17 +250,6 @@ let g:mta_filetypes = {
 " vimproc options
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Automatically updates and builds vimproc using neobundle
-let vimproc_updcmd = has('win64') ?
-      \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
-execute "NeoBundle 'Shougo/vimproc.vim'," . string({
-      \ 'build' : {
-      \     'windows' : vimproc_updcmd,
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar options
@@ -315,7 +312,6 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplcache_dictionary_filetype_lists = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
     \ }
 
 " Define keyword.
@@ -359,3 +355,4 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd Filetype haskell setlocal omnifunc=necoghc#omnifunc
