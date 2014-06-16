@@ -35,6 +35,7 @@ NeoBundle 'sjl/gundo.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
 
 " Haskell
+NeoBundle 'lukerandall/haskellmode-vim'
 NeoBundle 'eagletmt/ghcmod-vim'
 NeoBundle 'neco-ghc'
 
