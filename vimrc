@@ -1,50 +1,61 @@
-" Settings for the Vundle plugin manager.
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
+" Settings for the NeoBundle plugin manager.
+if has('vim_starting')
+    set nocompatible
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Plugins
-Plugin 'gmarik/Vundle.vim'
-
-Plugin 'tpope/vim-surround'
+" Plugin 'gmarik/Vundle.vim'
 " Plugin 'tpope/vim-sleuth'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-unimpaired'
+" Plugin 'kien/ctrlp.vim'
 
-Plugin 'shougo/neocomplcache.vim'
-Plugin 'shougo/vimproc.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
-Plugin 'kien/ctrlp.vim'
+NeoBundleFetch 'shougo/neobundle'
+NeoBundle 'shougo/neocomplcache.vim'
+NeoBundle 'shougo/unite.vim'
 
-Plugin 'edsono/vim-matchit'
-Plugin 'valloric/MatchTagAlways'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-unimpaired'
 
-Plugin 'majutsushi/tagbar'
-Plugin 'milkypostman/vim-togglelist'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'bling/vim-airline'
 
-Plugin 'marijnh/tern_for_vim'
-Plugin 'sjl/gundo.vim'
+NeoBundle 'edsono/vim-matchit'
+NeoBundle 'valloric/MatchTagAlways'
+
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'milkypostman/vim-togglelist'
+
+NeoBundle 'sjl/gundo.vim'
+NeoBundle 'terryma/vim-multiple-cursors'
+
+" Haskell
+NeoBundle 'eagletmt/ghcmod-vim'
+NeoBundle 'neco-ghc'
+
+" JS
+NeoBundle 'marijnh/tern_for_vim'
 
 " Syntax
-Plugin 'eagletmt/ghcmod-vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'othree/html5-syntax.vim'
-Plugin 'tpope/vim-markdown'
-Plugin 'jelera/vim-javascript-syntax'
-Plugin 'tpope/vim-haml'
-Plugin 'hdima/python-syntax'
+NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
+NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'html']}}
+NeoBundleLazy 'othree/html5-syntax.vim', {'autoload':{'filetypes':['html', 'htmldjango']}}
+NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
+NeoBundleLazy 'tpope/vim-haml', {'autoload':{'filetypes':['haml']}}
+NeoBundleLazy 'hdima/python-syntax', {'autoload':{'filetypes':['html']}}
 
 " Themes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'jonathanfilip/vim-lucius'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'jonathanfilip/vim-lucius'
+NeoBundle 'flazz/vim-colorschemes'
 
-let g:vundle_lazy_load=0
-call vundle#end()
+call neobundle#end()
 filetype plugin indent on
+NeoBundleCheck
 
 " Sets the encoding to the utf-8 character set
 set enc=utf-8
@@ -94,12 +105,12 @@ set formatoptions=croqn2
 " Solarized
 " let g:solarized_termcolors=256
 " syntax enable
-" set background=dark
-" colorscheme solarized
+set background=dark
+colorscheme solarized
 
 " Lucius
-colorscheme lucius
-LuciusBlackLowContrast
+" colorscheme lucius
+"LuciusBlackLowContrast
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup
@@ -163,6 +174,40 @@ autocmd FileType html,eruby,htmldjango,php,xml set mps+=<:> shiftwidth=2 tabstop
 " autocmd FileType plaintex,html,php,xml set spell
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
+" Unite
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:unite_source_history_yank_enable = 1
+let g:unite_force_overwrite_statusline = 0
+" let g:unite_winheight = 10
+
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ '\.sass-cache/',
+      \ ], '\|'))
+
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+" File searching like ctrlp.vim
+nnoremap <space>p :<C-u>Unite -buffer-name=files  -start-insert file_rec/async:!<cr>
+nnoremap <space>/ :<C-u>Unite -buffer-name=grep   grep:!<cr>
+nnoremap <space>b :<C-u>Unite -quick-match        buffer<cr>
+nnoremap <space>y :<C-u>Unite -buffer-name=yank   history/yank<cr>
+nnoremap <space>r :<C-u>Unite -buffer-name=mru    file_mru<cr>
+
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+  imap <silent><buffer><expr> <C-x> unite#do_action('split')
+  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+  imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
+
+  nmap <buffer> <ESC> <Plug>(unite_exit)
+endfunction
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline_powerline_fonts = 1
@@ -189,11 +234,20 @@ let g:mta_filetypes = {
     \ 'htmldjango' : 1,}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" CtrlP options
+" vimproc options
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set this to 1 to set regexp search as the default: >
-  let g:ctrlp_regexp = 1
+" Automatically updates and builds vimproc using neobundle
+let vimproc_updcmd = has('win64') ?
+      \ 'tools\\update-dll-mingw 64' : 'tools\\update-dll-mingw 32'
+execute "NeoBundle 'Shougo/vimproc.vim'," . string({
+      \ 'build' : {
+      \     'windows' : vimproc_updcmd,
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ })
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Tagbar options
@@ -237,7 +291,8 @@ map <F11> :call ToggleLocationList()<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Neo complete options
 """""""""""""""""""""""""""""""""""""""""""""""""""
-
+" disable AutoComplPop.
+let g:acp_enableAtStartup = 0
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
 " Use smartcase.
@@ -245,6 +300,18 @@ let g:neocomplcache_enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Use camel case completion.
+"let g:neocomplcache_enable_camel_case_completion = 1
+" Use underbar completion.
+"let g:neocomplcache_enable_underbar_completion = 1
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+    \ 'default' : '',
+    \ 'vimshell' : $HOME.'/.vimshell_hist',
+    \ 'scheme' : $HOME.'/.gosh_completions'
+    \ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
@@ -262,21 +329,28 @@ inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   return neocomplcache#smart_close_popup() . "\<CR>"
   " For no inserting <CR> key.
-  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+  " return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 endfunction
 " <TAB>: completion.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-"inoremap <expr><C-y>  neocomplcache#close_popup()
-"inoremap <expr><C-e>  neocomplcache#cancel_popup()
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplcache#close_popup() : "\<Space>"
 
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplcache_enable_auto_select = 1
+"let g:neocomplcache_disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
+
 " Enable omni completion.
-autocmd FileType css,scss setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,mkd,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
