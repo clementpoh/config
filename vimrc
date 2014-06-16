@@ -13,6 +13,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundleFetch 'shougo/neobundle'
 NeoBundle 'shougo/neocomplcache.vim'
+NeoBundle 'shougo/neomru.vim'
 NeoBundle 'shougo/unite.vim'
 
 NeoBundle 'tpope/vim-surround'
@@ -177,6 +178,9 @@ autocmd FileType html,eruby,htmldjango,php,xml set mps+=<:> shiftwidth=2 tabstop
 " Unite
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
+nnoremap [unite] <nop>
+nmap <space> [unite]
+
 let g:unite_source_history_yank_enable = 1
 let g:unite_force_overwrite_statusline = 0
 " let g:unite_winheight = 10
@@ -190,11 +194,11 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 " File searching like ctrlp.vim
-nnoremap <space>p :<C-u>Unite -buffer-name=files  -start-insert file_rec/async:!<cr>
-nnoremap <space>/ :<C-u>Unite -buffer-name=grep   grep:!<cr>
-nnoremap <space>b :<C-u>Unite -quick-match        buffer<cr>
-nnoremap <space>y :<C-u>Unite -buffer-name=yank   history/yank<cr>
-nnoremap <space>r :<C-u>Unite -buffer-name=mru    file_mru<cr>
+nnoremap [unite]p :Unite -buffer-name=files  -start-insert file_rec/async:!<cr>
+nnoremap [unite]/ :Unite -buffer-name=grep   grep:!<cr>
+nnoremap [unite]b :Unite -quick-match        buffer<cr>
+nnoremap [unite]y :Unite -buffer-name=yank   history/yank<cr>
+nnoremap [unite]r :Unite -buffer-name=mru    file_mru<cr>
 
 autocmd FileType unite call s:unite_settings()
 function! s:unite_settings()
