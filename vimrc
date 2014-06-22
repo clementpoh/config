@@ -56,7 +56,7 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
 
 " Syntax
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
-NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'html']}}
+NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'sass', 'html']}}
 NeoBundleLazy 'othree/html5-syntax.vim', {'autoload':{'filetypes':['html', 'htmldjango']}}
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'tpope/vim-haml', {'autoload':{'filetypes':['haml']}}
@@ -205,6 +205,7 @@ call unite#filters#matcher_default#use(['matcher_fuzzy'])
 " File searching like ctrlp.vim
 nnoremap [unite]p :Unite -buffer-name=files  -start-insert file_rec/async:!<CR>
 nnoremap [unite]/ :Unite -buffer-name=grep   grep:!<CR>
+nnoremap [unite]f :Unite -buffer-name=files  file<CR>
 nnoremap [unite]b :Unite -quick-match        buffer<CR>
 nnoremap [unite]y :Unite -buffer-name=yank   history/yank<CR>
 nnoremap [unite]r :Unite -buffer-name=mru    file_mru<CR>

@@ -9,6 +9,8 @@
 export PATH="$PATH:$HOME/.cabal/bin"
 export PYTHONSTARTUP="~/.pystartup"
 
+export EDITOR="vim"
+
 # Make sure that the term is at least a 256 color term.
 export TERM='xterm-256color'
 
