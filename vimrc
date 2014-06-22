@@ -178,7 +178,7 @@ autocmd FileType html,eruby,htmldjango,php,xml setlocal mps+=<:> shiftwidth=2 ta
 " Look up the type of the haskell expression under the cursor
 autocmd FileType haskell nnoremap <leader>t :GhcModType<CR>
 autocmd FileType haskell nnoremap <leader>c :GhcModTypeClear<CR>
-autocmd FileType haskell nnoremap <leader>i :GhcModTypeClear<CR>
+autocmd FileType haskell nnoremap <leader>i :GhcModTypeInsert<CR>
 
 " set the spell checker on.
 " autocmd FileType text,markdown,plaintex,html,php,xml set spell
