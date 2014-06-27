@@ -38,6 +38,7 @@ NeoBundle 'milkypostman/vim-togglelist'
 
 NeoBundle 'sjl/gundo.vim'
 NeoBundle 'terryma/vim-multiple-cursors'
+NeoBundle 'lokaltog/vim-easymotion'
 
 " Haskell
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload':{'filetypes':['haskell']}}
