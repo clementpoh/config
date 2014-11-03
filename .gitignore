@@ -4,6 +4,7 @@
 *.css
 *.scssc
 *.netrwhist
+.DS_Store
 
 vim/bundle/**
 !vim/bundle/Vundle.vim

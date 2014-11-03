@@ -118,9 +118,9 @@ set smarttab
 set formatoptions=croqn2
 
 " syntax colouration and highlighting
-" Solarized
+syn on
 set background=dark
-colorscheme solarized
+colorscheme mustang
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup
