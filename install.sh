@@ -24,6 +24,13 @@ if [ ! -f "~/.bashrc" ]; then
     echo "Symlinking bashrc"
     ln -s $DIR/bashrc ~/.bashrc
     ln -s $DIR/bash_profile ~/.bash_profile
+    echo "Symlinking gitconfig"
+    ln -s $DIR/gitconfig ~/.gitconfig
+    echo "Symlinking pylintrc"
+    ln -s $DIR/pylintrc ~/.pylintrc
+    ln -s $DIR/pystartup ~/.pystartup
+    echo "Symlinking ssh settings"
+    ln -s $DIR/ssh ~/.ssh
 fi
 
 # Vim setup

@@ -7,7 +7,7 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 
 " Plugins
-NeoBundleFetch 'shougo/neobundle'
+" NeoBundleFetch 'shougo/neobundle'
 NeoBundle 'shougo/neocomplcache.vim'
 NeoBundle 'shougo/neomru.vim'
 NeoBundle 'shougo/unite.vim'
