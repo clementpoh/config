@@ -118,7 +118,7 @@ set formatoptions=croqn2
 " syntax colouration and highlighting
 syn on
 set background=dark
-colorscheme wintersday
+colorscheme Tomorrow-Night
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup

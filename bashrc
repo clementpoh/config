@@ -6,7 +6,8 @@
 # export http_proxy='http://10.42.253.9:80'
 # export https_proxy='https://10.42.253.9:80'
 
-export PATH="$PATH:$HOME/.cabal/bin"
+export PATH="$HOME/.cabal/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
 export PYTHONSTARTUP="~/.pystartup"
 
 export EDITOR="vim"
