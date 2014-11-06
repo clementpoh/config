@@ -65,8 +65,6 @@ NeoBundleLazy 'tpope/vim-haml', {'autoload':{'filetypes':['haml']}}
 NeoBundleLazy 'hdima/python-syntax', {'autoload':{'filetypes':['html']}}
 
 " Themes
-"Plugin 'altercation/vim-colors-solarized'
-"Plugin 'jonathanfilip/vim-lucius'
 NeoBundle 'flazz/vim-colorschemes'
 
 call neobundle#end()
@@ -120,7 +118,7 @@ set formatoptions=croqn2
 " syntax colouration and highlighting
 syn on
 set background=dark
-colorscheme mustang
+colorscheme wintersday
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup
