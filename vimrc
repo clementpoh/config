@@ -144,7 +144,7 @@ set nu
 " folding commands.
 " :set foldcolumn=2
 set foldmethod=indent
-set foldlevel=4
+set foldenable
 
 " tab autocompletion in the command space
 set wildmenu
@@ -157,8 +157,8 @@ set wildmode=longest,full
 " imap ;; <Esc>
 
 " Pressing F12 will refresh the syntax highlighting
-imap <F12> <C-o>:syntax sync fromstart<CR>
-map <F12> <Esc>:syntax sync fromstart<CR>
+imap <F12> <C-o>:syntax sync fromstart<CR>:noh<CR>
+map <F12> <Esc>:syntax sync fromstart<CR>:noh<CR>
 
 " So that the IME does not interfere with VIM.
 set iminsert=0
