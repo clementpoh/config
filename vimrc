@@ -41,6 +41,8 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'lokaltog/vim-easymotion'
 NeoBundle 'editorconfig/editorconfig-vim'
 
+NeoBundle 'dkprice/vim-easygrep', {'rev' : 'unstable'}
+
 " Haskell
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload':{'filetypes':['haskell']}}
 NeoBundleLazy 'eagletmt/neco-ghc', {'autoload':{'filetypes':['haskell']}}
@@ -182,11 +184,15 @@ autocmd FileType haskell nnoremap <leader>i :GhcModTypeInsert<CR>
 
 " set the spell checker on.
 " autocmd FileType text,markdown,plaintex,html,php,xml set spell
+"
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" EasyGrep
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:EasyGrepRoot="repository"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite
 """""""""""""""""""""""""""""""""""""""""""""""""""
-
 nnoremap [unite] <nop>
 nmap <space> [unite]
 
