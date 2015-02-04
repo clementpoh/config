@@ -3,13 +3,15 @@
 # for examples
 
 # Deloitte Proxy
-# export http_proxy='http://10.42.253.9:80'
-# export https_proxy='https://10.42.253.9:80'
+export http_proxy='http://proxy.au.deloitte.com:80'
+export https_proxy='https://proxy.au.deloitte.com:80'
 
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
 export PYTHONSTARTUP="~/.pystartup"
 
+# Set bash editing mode to vim
+set -o vi
 export EDITOR="vim"
 
 # Make sure that the term is at least a 256 color term.
