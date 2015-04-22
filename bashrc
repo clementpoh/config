@@ -7,7 +7,7 @@ export http_proxy='http://proxy.au.deloitte.com:80'
 export https_proxy='https://proxy.au.deloitte.com:80'
 
 export PATH="$HOME/.cabal/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.1.0/bin:$PATH"
+export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
 export PYTHONSTARTUP="~/.pystartup"
 
 # Set bash editing mode to vim

@@ -100,6 +100,10 @@ set showmatch
 
 " don't wrap long lines
 set nowrap
+
+" Show non-white space characters when using :set list
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
 " character to mark lines that exceed 80 characters
 set listchars+=extends:@
 
@@ -254,19 +258,32 @@ let g:mta_filetypes = {
     \ 'htmldjango' : 1,}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" vimproc options
+" Hex editing
 """""""""""""""""""""""""""""""""""""""""""""""""""
+noremap <F6> :call HexMe()<CR>
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-" Tagbar options
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <F8> :TagbarToggle<CR>
+let $in_hex=0
+function HexMe()
+    set binary
+    set noeol
+    if $in_hex>0
+        :%!xxd -r
+        let $in_hex=0
+        else
+        :%!xxd
+        let $in_hex=1
+    endif
+endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Gundo options
 """""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <F7> :GundoToggle<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Tagbar options
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap <F8> :TagbarToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic options

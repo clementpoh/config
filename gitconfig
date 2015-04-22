@@ -11,3 +11,6 @@
 	d = difftool
 [push]
 	default = simple
+[http]
+    # proxy = https://proxy.au.deloitte.com:80
+    postBuffer = 524288000
