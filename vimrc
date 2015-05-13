@@ -76,6 +76,9 @@ NeoBundleCheck
 " Sets the encoding to the utf-8 character set
 set enc=utf-8
 
+" Reload files changed externally to vim.
+set autoread
+
 " shows status line with filename, column/row coords, dirty bit
 set laststatus=2
 set ruler
