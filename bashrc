@@ -2,9 +2,13 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# Deloitte Proxy
-export http_proxy='http://proxy.au.deloitte.com:80'
-export https_proxy='https://proxy.au.deloitte.com:80'
+# Ping proxy and set proxy if ping successful
+proxy='proxy.au.deloitte.com'
+if ping -c 1 $proxy &> /dev/null; then
+    export http_proxy="http://$proxy"
+    export https_proxy="https://$proxy"
+fi
+
 
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
@@ -147,9 +151,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
-    alias grep='grep -n --color=always'
-    alias fgrep='fgrep-n --color=always'
-    alias egrep='egrep -n --color=always'
+    alias grep='grep -n --color=auto'
+    alias fgrep='fgrep-n --color=auto'
+    alias egrep='egrep -n --color=auto'
 fi
 
 # Enable colours for MacOS

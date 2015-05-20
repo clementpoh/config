@@ -26,11 +26,11 @@ cd $DIR
 export PATH="$PATH:$DIR/bin"
 
 # Run the git update command to update the git repository and submodules.
-echo -e "\nUpdating local repositories.\n"
+echo -e "\n Updating local repositories. \n"
 git update
 
 # Install fonts.
-# echo -e "\nInstalling fonts locally.\n"
+# echo -e "\n Installing fonts locally. \n"
 # fonts/powerline-fonts/install.sh
 
 # Vim setup
@@ -42,7 +42,7 @@ if [ ! -d "vim/bundle" ]; then
 fi
 
 # Link all the rc files.
-echo -e "\nLinking run command files.\n"
+echo -e "\n Linking run command files. \n"
 for i in $( ls *rc ); do
     if [ ! -f "$HOME/.$i" ]; then
         echo "Symlinking $HOME/.$i to $RDIR/$i"
