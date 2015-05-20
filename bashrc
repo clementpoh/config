@@ -136,7 +136,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1="${bldblu}\u${bldpur}@${bldred}\h${bldylw}:${bldgrn}\w\n${txtrst}$"
+    PS1="${bldblu}\u${bldpur}@${bldred}\h${bldylw}:${bldgrn}\w${txtrst}$ "
 fi
 
 unset color_prompt force_color_prompt
