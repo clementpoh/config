@@ -29,6 +29,10 @@ export PATH="$PATH:$DIR/bin"
 echo -e "\nUpdating local repositories.\n"
 git update
 
+# Install fonts.
+echo "\nInstalling fonts locally.\n"
+fonts/powerline-fonts/install.sh
+
 # Vim setup
 if [ ! -d "vim/bundle" ]; then
     echo "Installing neobundle"
