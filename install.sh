@@ -33,6 +33,11 @@ git update
 # echo -e "\n Installing fonts locally. \n"
 # fonts/powerline-fonts/install.sh
 
+if [ ! -d "$HOME/.config" ]; then
+    echo "Symlinking config folder"
+    ln -s "$DIR" "$HOME/.config"
+fi
+
 # Vim setup
 if [ ! -d "vim/bundle" ]; then
     echo "Installing neobundle"
