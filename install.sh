@@ -5,7 +5,7 @@ SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   TARGET="$(readlink "$SOURCE")"
   if [[ $SOURCE == /* ]]; then
-    # echo "SOURCE '$SOURCE' is an absolute symlink to '$TARGET'"
+    # echo "SOURCE '$SOURCE' is an absolute link to '$TARGET'"
     SOURCE="$TARGET"
   else
     DIR="$( dirname "$SOURCE" )"
@@ -19,29 +19,39 @@ done
 RDIR="$( dirname "$SOURCE" )"
 DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
-# Bash setup
-if [ ! -f "~/.bashrc" ]; then
-    echo "Symlinking bashrc"
-    ln -s $DIR/bashrc ~/.bashrc
-    ln -s $DIR/bash_profile ~/.bash_profile
-    echo "Symlinking gitconfig"
-    ln -s $DIR/gitconfig ~/.gitconfig
-    echo "Symlinking pylintrc"
-    ln -s $DIR/pylintrc ~/.pylintrc
-    ln -s $DIR/pystartup ~/.pystartup
-    echo "Symlinking ssh settings"
-    ln -s $DIR/ssh ~/.ssh
-fi
+# Change the WD
+cd $DIR
+
+# Add $DIR to the path
+export PATH="$PATH:$DIR/bin"
 
 # Vim setup
 if [ ! -d "vim/bundle" ]; then
     echo "Installing neobundle"
     mkdir -p vim/bundle
     git clone https://github.com/shougo/neobundle.vim vim/bundle/neobundle.vim
-    ln -s $DIR/vim ~/.vim
+    ln -s "$DIR/vim" "$HOME/.vim"
 fi
 
-if [ ! -f "~/.vimrc" ]; then
-    echo "Symlinking the vimrc"
-    ln -s $DIR/vimrc ~/.vimrc
-fi
+# Run the git update command to update the git repository and submodules.
+echo -e "\nUpdating local repositories.\n"
+git update
+
+echo -e "\nLinking run command files.\n"
+for i in $( ls *rc ); do
+    if [ ! -f "$HOME/.$i" ]; then
+        echo "Symlinking $HOME/.$i to $RDIR/$i"
+        ln -s "$DIR/$i" "$HOME/.$i"
+    else
+        echo "$HOME/.$i already exists."
+    fi
+done
+
+for i in bash_profile gitconfig pystartup; do
+    if [ ! -f "$HOME/.$i" ]; then
+        echo "Symlinking $HOME/.$i to $RDIR/$i"
+        ln -s "$DIR/$i" "$HOME/.$i"
+    else
+        echo "$HOME/.$i already exists."
+    fi
+done

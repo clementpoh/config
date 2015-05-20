@@ -8,7 +8,7 @@ export https_proxy='https://proxy.au.deloitte.com:80'
 
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
-export PYTHONSTARTUP="~/.pystartup"
+export PYTHONSTARTUP="$HOME/.pystartup"
 
 # Set bash editing mode to vim
 set -o vi
@@ -63,7 +63,7 @@ SOURCE="${BASH_SOURCE[0]}"
 while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
   TARGET="$(readlink "$SOURCE")"
   if [[ $SOURCE == /* ]]; then
-    # echo "SOURCE '$SOURCE' is an absolute symlink to '$TARGET'"
+    # echo "SOURCE '$SOURCE' is an absolute link to '$TARGET'"
     SOURCE="$TARGET"
   else
     DIR="$( dirname "$SOURCE" )"
@@ -80,7 +80,6 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # Add $DIR to the path
 export PATH="$PATH:$DIR/bin"
-
 
 # If not running interactively, don't do anything
 case $- in
