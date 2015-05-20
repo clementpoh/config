@@ -25,6 +25,10 @@ cd $DIR
 # Add $DIR to the path
 export PATH="$PATH:$DIR/bin"
 
+# Run the git update command to update the git repository and submodules.
+echo -e "\nUpdating local repositories.\n"
+git update
+
 # Vim setup
 if [ ! -d "vim/bundle" ]; then
     echo "Installing neobundle"
@@ -33,10 +37,7 @@ if [ ! -d "vim/bundle" ]; then
     ln -s "$DIR/vim" "$HOME/.vim"
 fi
 
-# Run the git update command to update the git repository and submodules.
-echo -e "\nUpdating local repositories.\n"
-git update
-
+# Link all the rc files.
 echo -e "\nLinking run command files.\n"
 for i in $( ls *rc ); do
     if [ ! -f "$HOME/.$i" ]; then
@@ -47,6 +48,7 @@ for i in $( ls *rc ); do
     fi
 done
 
+# Link the non rc config files.
 for i in bash_profile gitconfig pystartup; do
     if [ ! -f "$HOME/.$i" ]; then
         echo "Symlinking $HOME/.$i to $RDIR/$i"
@@ -55,3 +57,12 @@ for i in bash_profile gitconfig pystartup; do
         echo "$HOME/.$i already exists."
     fi
 done
+
+# link the dircolors
+file=dircolors
+if [ ! -f "$HOME/.$file" ]; then
+echo "Symlinking $HOME/.$file to $RDIR/dircolors/dircolors.ansi-universal"
+    ln -s "$DIR/dircolors/dircolors.ansi-universal" "$HOME/.$file"
+else
+    echo "$HOME/.$file already exists."
+fi
