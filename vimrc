@@ -41,7 +41,7 @@ NeoBundle 'terryma/vim-multiple-cursors'
 NeoBundle 'lokaltog/vim-easymotion'
 NeoBundle 'editorconfig/editorconfig-vim'
 
-NeoBundle 'dkprice/vim-easygrep', {'rev' : 'unstable'}
+NeoBundle 'dkprice/vim-easygrep'
 
 " Haskell
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload':{'filetypes':['haskell']}}
@@ -195,7 +195,8 @@ autocmd FileType haskell nnoremap <leader>i :GhcModTypeInsert<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyGrep
 """""""""""""""""""""""""""""""""""""""""""""""""""
-let g:EasyGrepRoot="repository"
+let g:EasyGrepRoot = "repo"
+let g:EasyGrepFIlesToExclude=".o"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite
