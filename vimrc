@@ -163,9 +163,12 @@ set wildmode=longest,full
 " map ;; to Escape in insert mode.
 " imap ;; <Esc>
 
-" Pressing F12 will refresh the syntax highlighting
+" Pressing F12 will refresh the syntax highlighting.
 imap <F12> <C-o>:syntax sync fromstart<CR>:noh<CR>
 map <F12> <Esc>:syntax sync fromstart<CR>:noh<CR>
+
+" Toggles display of unprintable characters.
+nnoremap <F5> :set list!<CR>
 
 " So that the IME does not interfere with VIM.
 set iminsert=0

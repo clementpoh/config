@@ -58,7 +58,7 @@ for i in $( ls *rc ); do
 done
 
 # Link the non rc config files.
-for i in bash_profile gitconfig pystartup; do
+for i in bash_profile gitconfig pystartup gdbinit; do
     if [ ! -f "$HOME/.$i" ]; then
         echo "Symlinking $HOME/.$i to $RDIR/$i"
         ln -s "$DIR/$i" "$HOME/.$i"
