@@ -4,11 +4,12 @@
 
 # Ping proxy and set proxy if ping successful
 proxy='proxy.au.deloitte.com'
+proxy_port='80'
 if ping -c 1 $proxy &> /dev/null; then
-    export http_proxy="http://$proxy"
-    export https_proxy="https://$proxy"
+    echo "proxy enabled: $proxy:$proxy_port"
+    export http_proxy="http://$proxy:$proxy_port"
+    export https_proxy="https://$proxy:$proxy_port"
 fi
-
 
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
@@ -190,3 +191,4 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
