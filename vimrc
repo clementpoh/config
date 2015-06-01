@@ -202,10 +202,11 @@ autocmd FileType haskell nnoremap <leader>i :GhcModTypeInsert<CR>
 " EasyGrep searches according to the current filetype.
 let g:EasyGrepMode = 2
 " Uses grep rather than vimgrep.
-let g:EasyGrepCommand = 1
+" let g:EasyGrepCommand = 1
 " Looks for a repository directory to search under, defaults to cwd if it can't find one.
-let g:EasyGrepRoot = "repo"
-let g:EasyGrepFilesToExclude = ".o"
+let g:EasyGrepRoot = "search:.git,.hg,.svn"
+let g:EasyGrepFilesToExclude = ".o,.svn,.git,build"
+let g:EasyGrepRecursive = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Unite
