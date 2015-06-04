@@ -43,6 +43,11 @@ NeoBundle 'editorconfig/editorconfig-vim'
 
 NeoBundle 'dkprice/vim-easygrep'
 
+" Text objects
+NeoBundle 'vim-scripts/argtextobj.vim'
+NeoBundle 'michaeljsmith/vim-indent-object'
+NeoBundle 'bkad/CamelCaseMotion'
+
 " Haskell
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload':{'filetypes':['haskell']}}
 NeoBundleLazy 'eagletmt/neco-ghc', {'autoload':{'filetypes':['haskell']}}
