@@ -63,6 +63,9 @@ NeoBundleLazy 'marijnh/tern_for_vim', {
     \    },
     \ }
 
+" HTML XML allml
+NeoBundle 'tpope/vim-ragtag'
+
 " Syntax
 NeoBundleLazy 'jelera/vim-javascript-syntax', {'autoload':{'filetypes':['javascript']}}
 NeoBundleLazy 'hail2u/vim-css3-syntax', {'autoload':{'filetypes':['css', 'sass', 'html']}}
