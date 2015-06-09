@@ -48,6 +48,9 @@ NeoBundle 'vim-scripts/argtextobj.vim'
 NeoBundle 'michaeljsmith/vim-indent-object'
 NeoBundle 'bkad/CamelCaseMotion'
 
+" Log files
+" NeoBundle 'vim-scripts/log4j.vim'
+
 " Haskell
 NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload':{'filetypes':['haskell']}}
 NeoBundleLazy 'eagletmt/neco-ghc', {'autoload':{'filetypes':['haskell']}}
@@ -200,6 +203,9 @@ autocmd FileType haskell nnoremap <leader>t :GhcModType<CR>
 autocmd FileType haskell nnoremap <leader>c :GhcModTypeClear<CR>
 autocmd FileType haskell nnoremap <leader>i :GhcModTypeInsert<CR>
 
+" Set the syntax highlighting of log files to log4j
+autocmd BufRead,BufNew *.log set filetype=messages
+
 " set the spell checker on.
 " autocmd FileType text,markdown,plaintex,html,php,xml set spell
 "
@@ -210,10 +216,10 @@ autocmd FileType haskell nnoremap <leader>i :GhcModTypeInsert<CR>
 " EasyGrep searches according to the current filetype.
 let g:EasyGrepMode = 2
 " Uses grep rather than vimgrep.
-" let g:EasyGrepCommand = 1
+"  let g:EasyGrepCommand = 1
 " Looks for a repository directory to search under, defaults to cwd if it can't find one.
 let g:EasyGrepRoot = "search:.git,.hg,.svn"
-let g:EasyGrepFilesToExclude = ".o,.svn,.git,build"
+let g:EasyGrepFilesToExclude = ".o,.svn,.git,build,node_modules"
 let g:EasyGrepRecursive = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -227,10 +233,12 @@ let g:unite_force_overwrite_statusline = 0
 " let g:unite_winheight = 10
 
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ '\.sass-cache/',
-      \ ], '\|'))
+    \ 'ignore_pattern', join([
+    \ '\.git/',
+    \ '\.sass-cache/',
+    \ '\node_modules/',
+    \ 'build/',
+    \ ], '\|'))
 
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
