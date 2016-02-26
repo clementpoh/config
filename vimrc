@@ -56,15 +56,15 @@ NeoBundleLazy 'eagletmt/ghcmod-vim', {'autoload':{'filetypes':['haskell']}}
 NeoBundleLazy 'eagletmt/neco-ghc', {'autoload':{'filetypes':['haskell']}}
 
 " JS
-NeoBundleLazy 'marijnh/tern_for_vim', {
-    \ 'autoload' : {'filetypes':['javascript']},
-    \ 'build' : {
-    \     'windows' : 'npm intall',
-    \     'cygwin' : 'npm install',
-    \     'mac' : 'npm install',
-    \     'unix' : 'npm install',
-    \    },
-    \ }
+"NeoBundleLazy 'marijnh/tern_for_vim', {
+    "\ 'autoload' : {'filetypes':['javascript']},
+    "\ 'build' : {
+    "\     'windows' : 'npm intall',
+    "\     'cygwin' : 'npm install',
+    "\     'mac' : 'npm install',
+    "\     'unix' : 'npm install',
+    "\    },
+    "\ }
 
 " HTML XML allml
 NeoBundle 'tpope/vim-ragtag'
@@ -216,7 +216,7 @@ autocmd BufRead,BufNew *.log set filetype=messages
 " EasyGrep searches according to the current filetype.
 let g:EasyGrepMode = 2
 " Uses grep rather than vimgrep.
-"  let g:EasyGrepCommand = 1
+let g:EasyGrepCommand = 1
 " Looks for a repository directory to search under, defaults to cwd if it can't find one.
 let g:EasyGrepRoot = "search:.git,.hg,.svn"
 let g:EasyGrepFilesToExclude = ".o,.svn,.git,build,node_modules"
@@ -243,7 +243,7 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 
 " File searching like ctrlp.vim
-nnoremap [unite]p :Unite -buffer-name=files  -start-insert file_rec/async:!<CR>
+nnoremap [unite]p :<C-u>Unite -start-insert  file_rec/async:!<CR>
 nnoremap [unite]/ :Unite -buffer-name=grep   grep:!<CR>
 nnoremap [unite]f :Unite -buffer-name=files  file<CR>
 nnoremap [unite]b :Unite -quick-match        buffer<CR>
@@ -318,6 +318,7 @@ nmap <F8> :TagbarToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic options
 """""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_always_populate_loc_list = 1
@@ -332,6 +333,9 @@ let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
 
 " Use jshint (uses ~/.jshintrc)
 let g:syntastic_javascript_checkers = ['jshint']
+
+" Use gcc, make and splint
+let g:syntastic_c_checkers = ['gcc', 'make']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Nerdtree options
