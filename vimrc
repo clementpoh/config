@@ -76,6 +76,7 @@ NeoBundleLazy 'othree/html5-syntax.vim', {'autoload':{'filetypes':['html', 'html
 NeoBundleLazy 'tpope/vim-markdown', {'autoload':{'filetypes':['markdown']}}
 NeoBundleLazy 'tpope/vim-haml', {'autoload':{'filetypes':['haml']}}
 NeoBundleLazy 'hdima/python-syntax', {'autoload':{'filetypes':['html']}}
+NeoBundleLazy 'justinmk/vim-syntax-extra', {'autoload':{'filetypes':['c']}}
 
 " Themes
 NeoBundle 'flazz/vim-colorschemes'
@@ -138,7 +139,7 @@ set formatoptions=croqn2
 " syntax colouration and highlighting
 syn on
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme gruvbox
 
 " write a backup of the current file (with an appended ~) on each write
 set nobackup
