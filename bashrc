@@ -3,7 +3,6 @@
 # for examples
 
 # Ping proxy and set proxy if ping successful
-cred='cpoh:01!e4078883!'
 proxy='proxy.au.deloitte.com'
 proxy_port='80'
 if ping -c 1 $proxy &> /dev/null; then
