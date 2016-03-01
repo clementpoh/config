@@ -3,10 +3,12 @@
 # for examples
 
 # Ping proxy and set proxy if ping successful
+cred='cpoh:01!e4078883!'
 proxy='proxy.au.deloitte.com'
 proxy_port='80'
 if ping -c 1 $proxy &> /dev/null; then
     echo "proxy enabled: $proxy:$proxy_port"
+    export all_proxy="http://$proxy:$proxy_port"
     export http_proxy="http://$proxy:$proxy_port"
     export https_proxy="https://$proxy:$proxy_port"
 fi
