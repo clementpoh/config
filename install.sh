@@ -39,10 +39,9 @@ if [ ! -d "$HOME/.config" ]; then
 fi
 
 # Vim setup
-if [ ! -d "vim/bundle" ]; then
-    echo "Installing neobundle"
-    mkdir -p vim/bundle
-    git clone https://github.com/shougo/neobundle.vim vim/bundle/neobundle.vim
+if [ ! -d "vim/bundle/repos/github.com/shougo/dein.vim" ]; then
+    echo "Installing dein"
+    ./dein.sh
     ln -s "$DIR/vim" "$HOME/.vim"
 fi
 
