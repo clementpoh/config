@@ -189,7 +189,7 @@
     autocmd FileType c setlocal cindent
 
     " Add '_' as a word separator in C
-    autocmd FileType c setlocal iskeyword-=_
+    " autocmd FileType c setlocal iskeyword-=_
 
     " matches '<' and '>', mainly for use when writing HTML.
     autocmd FileType html,eruby,htmldjango,php,xml setlocal mps+=<:> shiftwidth=2 tabstop=2
@@ -204,6 +204,17 @@
 
     " set the spell checker on.
     autocmd FileType text,markdown,plaintex,html,xml set spell
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Matchit
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+    let loaded_matchit = 1
+    " Match quotation marks with %
+    let b:match_words='"\<:\>"'
+    " Match apostraphes marks with %
+    let b:match_words="'\<:\>'"
+    " Match backticks with %
+    let b:match_words='\S\@<!`:`\S\@!'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " EasyGrep
