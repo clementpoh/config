@@ -5,12 +5,14 @@
 
 if [ $# -ne 1 ]; then
   echo "Did not specify an installation directory!"
-  PLUGIN_DIR="~/vim"
+  PLUGIN_DIR="./vim/bundle"
+  echo "Defaulting to $PLUGIN_DIR"
+else
+  PLUGIN_DIR=$1
 fi
 
 # Installation directory
-PLUGIN_DIR=$1
-INSTALL_DIR="$PLUGIN_DIR/repos/github.com/Shougo/dein.vim"
+INSTALL_DIR="$PLUGIN_DIR/repos/github.com/shougo/dein.vim"
 echo "Install to \"$INSTALL_DIR\"..."
 if [ -e "$INSTALL_DIR" ]; then
   echo "\"$INSTALL_DIR\" already exists!"
@@ -32,7 +34,7 @@ echo ""
 if ! [ -e "$INSTALL_DIR" ]; then
   echo "Begin fetching dein..."
   mkdir -p "$PLUGIN_DIR"
-  git clone https://github.com/Shougo/dein.vim "$INSTALL_DIR"
+  git clone https://github.com/shougo/dein.vim "$INSTALL_DIR"
   echo "Done."
   echo ""
 fi
@@ -55,14 +57,14 @@ echo "Please add the following settings for dein to the top of your vimrc (Vim) 
     echo ""
     echo "\" Let dein manage dein"
     echo "\" Required:"
-    echo "call dein#add('Shougo/dein.vim')"
+    echo "call dein#add('shougo/dein.vim')"
     echo ""
     echo "\" Add or remove your plugins here:"
-    echo "call dein#add('Shougo/neosnippet.vim')"
-    echo "call dein#add('Shougo/neosnippet-snippets')"
+    echo "call dein#add('shougo/neosnippet.vim')"
+    echo "call dein#add('shougo/neosnippet-snippets')"
     echo ""
     echo "\" You can specify revision/branch/tag."
-    echo "call dein#add('Shougo/vimshell', { 'rev': '3787e5' })"
+    echo "call dein#add('shougo/vimshell', { 'rev': '3787e5' })"
     echo ""
     echo "\" Required:"
     echo "call dein#end()"
