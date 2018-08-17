@@ -10,7 +10,12 @@
     call dein#add('shougo/dein.vim')
 
     " Plugins
-    call dein#add('shougo/neocomplete.vim')
+    call dein#add('shougo/deoplete.nvim')
+    if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+
     call dein#add('shougo/neomru.vim')
     call dein#add('shougo/unite.vim')
     call dein#add('shougo/neosnippet.vim')
@@ -35,7 +40,6 @@
     call dein#add('scrooloose/nerdtree')
     call dein#add('bling/vim-airline')
 
-    call dein#add('edsono/vim-matchit')
     call dein#add('valloric/MatchTagAlways')
 
     call dein#add('majutsushi/tagbar')
@@ -66,6 +70,7 @@
     " Syntax
     call dein#add('pangloss/vim-javascript', {'on_ft':['javascript']})
     call dein#add('hail2u/vim-css3-syntax', {'on_ft':['css', 'sass', 'html']})
+    call dein#add('digitaltoad/vim-pug', {'on_ft':['pug']})
     call dein#add('othree/html5-syntax.vim', {'on_ft':['html', 'htmldjango']})
     call dein#add('tpope/vim-markdown', {'on_ft':['markdown']})
     call dein#add('tpope/vim-haml', {'on_ft':['haml']})
@@ -360,53 +365,9 @@
     map <F11> :call ToggleLocationList()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" Neocomplete options
+" Deoplete options
 """""""""""""""""""""""""""""""""""""""""""""""""""
-    let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
-    let g:neocomplete#enable_at_startup = 1
-    let g:neocomplete#enable_auto_select = 1
-    let g:neocomplete#enable_smart_case = 1
-    let g:neocomplete#auto_completion_start_length = 2
-
-    " increase limit for tag cache files
-    let g:neocomplete#sources#tags#cache_limit_size = 16777216 " 16MB
-
-    " fuzzy completion breaks dot-repeat more noticeably
-    " https://github.com/Shougo/neocomplete.vim/issues/332
-    let g:neocomplete#enable_fuzzy_completion = 0
-
-    " always use completions from all buffers
-    if !exists('g:neocomplete#same_filetypes')
-      let g:neocomplete#same_filetypes = {}
-    endif
-    let g:neocomplete#same_filetypes._ = '_'
-
-    " enable omni-completion for Ruby and PHP
-    call neocomplete#util#set_default_dictionary(
-          \'g:neocomplete#sources#omni#input_patterns', 'ruby',
-          \'[^. *\t]\.\h\w*\|\h\w*::\w*')
-    call neocomplete#util#set_default_dictionary(
-          \'g:neocomplete#sources#omni#input_patterns',
-          \'php',
-          \'[^. \t]->\h\w*\|\h\w*::\w*')
-
-    " from neocomplete.txt:
-    " ---------------------
-
-    " Plugin key-mappings.
-    inoremap <expr> <C-g> neocomplete#undo_completion()
-    inoremap <expr> <C-l> neocomplete#complete_common_string()
-
-    " Recommended key-mappings.
-    " <CR>: cancel popup and insert newline.
-    inoremap <silent> <CR> <C-r>=neocomplete#smart_close_popup()<CR><CR>
-    " <TAB>: completion.
-    inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
-    " <C-h>, <BS>: close popup and delete backword char.
-    inoremap <expr> <C-h> neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr> <BS>  neocomplete#smart_close_popup()."\<C-h>"
-    inoremap <expr> <C-y> neocomplete#close_popup()
-    inoremap <expr> <C-e> neocomplete#cancel_popup()
+    let g:deoplete#enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Neosnippet options
