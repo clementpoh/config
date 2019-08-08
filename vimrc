@@ -15,11 +15,12 @@
       call dein#add('roxma/nvim-yarp')
       call dein#add('roxma/vim-hug-neovim-rpc')
     endif
+    let g:deoplete#enable_at_startup = 1
 
-    call dein#add('shougo/neomru.vim')
-    call dein#add('shougo/unite.vim')
     call dein#add('shougo/neosnippet.vim')
     call dein#add('shougo/neosnippet-snippets')
+    call dein#add('shougo/neomru.vim')
+    call dein#add('shougo/denite.nvim')
 
     call dein#add('shougo/vimproc.vim', {
         \ 'build': {
@@ -77,6 +78,9 @@
     call dein#add('hdima/python-syntax', {'on_ft':['html']})
     call dein#add('vim-jp/vim-cpp', {'on_ft':['c', 'cpp']})
     call dein#add('justinmk/vim-syntax-extra', {'on_ft':['c']})
+    call dein#add('neowit/vim-force.com', {'on_ft':['apexcode']})
+    call dein#add('chrisbra/csv.vim', {'on_ft':['csv']})
+    call dein#add('jparise/vim-graphql')
 
     " Themes
     call dein#add('flazz/vim-colorschemes')
@@ -86,7 +90,8 @@
 
     " Install plugins on startup
     if dein#check_install()
-      call dein#install()
+        call dein#install()
+        call dein#update()
     endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -240,45 +245,6 @@
     let g:EasyGrepRecursive = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" Unite
-"""""""""""""""""""""""""""""""""""""""""""""""""""
-    nnoremap [unite] <nop>
-    nmap <space> [unite]
-
-    let g:unite_source_history_yank_enable = 1
-    let g:unite_force_overwrite_statusline = 0
-    " let g:unite_winheight = 10
-
-    call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-        \ 'ignore_pattern', join([
-        \ '\.git/',
-        \ '\.sass-cache/',
-        \ '\node_modules/',
-        \ 'build/',
-        \ ], '\|'))
-
-    call unite#filters#matcher_default#use(['matcher_fuzzy'])
-
-    " File searching like ctrlp.vim
-    nnoremap [unite]p :<C-u>Unite -start-insert  file_rec/async:!<CR>
-    nnoremap [unite]/ :Unite -buffer-name=grep   grep:!<CR>
-    nnoremap [unite]f :Unite -buffer-name=files  file<CR>
-    nnoremap [unite]b :Unite -quick-match        buffer<CR>
-    nnoremap [unite]y :Unite -buffer-name=yank   history/yank<CR>
-    nnoremap [unite]r :Unite -buffer-name=mru    file_mru<CR>
-
-    autocmd FileType unite call s:unite_settings()
-    function! s:unite_settings()
-      imap <buffer> <C-j>   <Plug>(unite_select_next_line)
-      imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
-      imap <silent><buffer><expr> <C-x> unite#do_action('split')
-      imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-      imap <silent><buffer><expr> <C-t> unite#do_action('tabopen')
-
-      nmap <buffer> <ESC> <Plug>(unite_exit)
-    endfunction
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Vim Airline
 """""""""""""""""""""""""""""""""""""""""""""""""""
     " Using powerline font
@@ -335,17 +301,26 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Syntastic options
 """""""""""""""""""""""""""""""""""""""""""""""""""
+
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+
     let g:syntastic_check_on_open=1
     let g:syntastic_enable_signs=1
     let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 0
 
     let g:syntastic_error_symbol = '✖'
     let g:syntastic_warning_symbol = '❢'
 
     " Use pylint
-    " let g:syntastic_python_checkers = ['pylint']
-    " let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
-    " let g:syntastic_python_pylint_quiet_messages = { 'type' : 'style' }
+    let g:syntastic_python_checkers = ['pylint']
+    let g:syntastic_python_pylint_args = '--rcfile=~/.pylintrc'
+    let g:syntastic_python_pylint_quiet_messages = { 'type' : 'style' }
+
+    " Use sqlint
+    let g:syntastic_sql_checkers = ['sqlint']
 
     " Use jshint (uses ~/.jshintrc)
     let g:syntastic_javascript_checkers = ['jshint']
@@ -359,15 +334,56 @@
     map <F9> :NERDTreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
+" Nerdcommenter options
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not
+let g:NERDToggleCheckAllLines = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Togglelist options
 """""""""""""""""""""""""""""""""""""""""""""""""""
-    map <F10> :call ToggleQuickfixList()<CR>
-    map <F11> :call ToggleLocationList()<CR>
+    map <F10> :call ToggleLocationList()<CR>
+    map <F11> :call ToggleQuickfixList()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Deoplete options
 """""""""""""""""""""""""""""""""""""""""""""""""""
-    let g:deoplete#enable_at_startup = 1
+" Use deoplete.
+call g:deoplete#custom#option('sources', {
+    \ '_': ['buffer'],
+    \ 'cpp': ['buffer', 'tag'],
+    \ 'python': ['buffer', 'tag'],
+    \})
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Airline
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+    " Using powerline font
+    let g:apex_tooling_force_dot_com_path = '~./config/tooling-force.com-0.4.4.0.jar'
+    let g:apex_temp_folder = '/tmp'
+    let g:apex_backup_folder = '/tmp'
+    let g:apex_properties_folder = '/tmp'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " Neosnippet options
@@ -376,3 +392,17 @@
     imap <C-k>     <Plug>(neosnippet_expand_or_jump)
     smap <C-k>     <Plug>(neosnippet_expand_or_jump)
     xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+    " SuperTab like snippets behavior.
+    " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+    imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+     \ "\<Plug>(neosnippet_expand_or_jump)"
+     \: pumvisible() ? "\<C-n>" : "\<TAB>"
+    smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+     \ "\<Plug>(neosnippet_expand_or_jump)"
+     \: "\<TAB>"
+
+    " For conceal markers.
+    if has('conceal')
+      set conceallevel=2 concealcursor=niv
+    endif

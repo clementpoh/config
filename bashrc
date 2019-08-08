@@ -3,22 +3,25 @@
 # for examples
 
 # Ping proxy and set proxy if ping successful
-proxy='proxy.au.deloitte.com'
-proxy_port='80'
-if ping -c 1 $proxy &> /dev/null; then
-    echo "proxy enabled: $proxy:$proxy_port"
-    export all_proxy="http://$proxy:$proxy_port"
-    export http_proxy="http://$proxy:$proxy_port"
-    export https_proxy="https://$proxy:$proxy_port"
-fi
+#proxy='proxy.au.deloitte.com'
+#proxy_port='80'
+#if ping -c 1 $proxy &> /dev/null; then
+    #echo "proxy enabled: $proxy:$proxy_port"
+    #export all_proxy="http://$proxy:$proxy_port"
+    #export http_proxy="http://$proxy:$proxy_port"
+    #export https_proxy="https://$proxy:$proxy_port"
+#fi
+
+export LC_ALL=en_US.UTF-8
 
 export PATH="$HOME/.cabal/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
+export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PYTHONSTARTUP="$HOME/.pystartup"
 
 # Set bash editing mode to vim
 set -o vi
-export EDITOR="vim"
+export EDITOR="nvim"
 
 # Make sure that the term is at least a 256 color term.
 export TERM='xterm-256color'
@@ -153,10 +156,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias dir='dir --color=auto'
     alias vdir='vdir --color=auto'
 
-    alias grep='grep -n --color=auto'
-    alias fgrep='fgrep-n --color=auto'
-    alias egrep='egrep -n --color=auto'
 fi
+
+alias grep='grep -n --color=auto'
+alias fgrep='fgrep-n --color=auto'
+alias egrep='egrep -n --color=auto'
 
 # Enable colours for MacOS
 if [[ `uname` == 'Darwin' ]]; then
