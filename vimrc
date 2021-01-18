@@ -27,6 +27,8 @@
 
   Plug 'sheerun/vim-polyglot'
 
+  Plug 'rafi/awesome-vim-colorschemes'
+
   call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -86,7 +88,7 @@
   " syntax colouration and highlighting
   syn on
   set background=dark
-  colorscheme desert
+  colorscheme OceanicNext
 
   " write a backup of the current file (with an appended ~) on each write
   set nobackup
