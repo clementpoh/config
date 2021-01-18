@@ -2,26 +2,13 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# Ping proxy and set proxy if ping successful
-#proxy='proxy.au.deloitte.com'
-#proxy_port='80'
-#if ping -c 1 $proxy &> /dev/null; then
-    #echo "proxy enabled: $proxy:$proxy_port"
-    #export all_proxy="http://$proxy:$proxy_port"
-    #export http_proxy="http://$proxy:$proxy_port"
-    #export https_proxy="https://$proxy:$proxy_port"
-#fi
-
 export LC_ALL=en_US.UTF-8
 
-export PATH="$HOME/.cabal/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
-export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PYTHONSTARTUP="$HOME/.pystartup"
 
 # Set bash editing mode to vim
 set -o vi
-export EDITOR="nvim"
+export EDITOR="vim"
 
 # Make sure that the term is at least a 256 color term.
 export TERM='xterm-256color'
@@ -88,7 +75,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 # echo "SOURCE is '$SOURCE'"
 
 # Add $DIR to the path
-export PATH="$PATH:$DIR/bin"
+export PATH="$PATH:$DIR/bin:~/bin"
 
 # If not running interactively, don't do anything
 case $- in
@@ -117,7 +104,15 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
+
+# Crow (Android emulator)
+if network-detect | grep -q "On corporate network: yes" ; then
+  source /google/data/ro/teams/mobile_eng_prod/crow/crow-complete.bash
+else
+  echo "Not on a corporate network: skipping Crow autocomplete."
+fi
+alias crow=/google/bin/releases/mobile-devx-platform/crow/crow.par
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -157,6 +152,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias vdir='vdir --color=auto'
 
 fi
+
+alias ssh='ssh -Y'
 
 alias grep='grep -n --color=auto'
 alias fgrep='fgrep-n --color=auto'

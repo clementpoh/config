@@ -39,9 +39,10 @@ if [ ! -d "$HOME/.config" ]; then
 fi
 
 # Vim setup
-if [ ! -d "vim/bundle/repos/github.com/shougo/dein.vim" ]; then
-    echo "Installing dein"
-    ./dein.sh
+if [ ! -d "vim/autoload/plug.vim" ]; then
+    echo "Installing Plug"
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+      https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     ln -s "$DIR/vim" "$HOME/.vim"
 fi
 

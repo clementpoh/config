@@ -11,17 +11,3 @@
 	d = difftool
 [push]
 	default = simple
-[http]
-    # proxy = https://proxy.au.deloitte.com:80
-    postBuffer = 524288000
-	sslverify = false
-[core]
-	excludesfile = /Users/clpoh/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[commit]
-	template = /Users/clpoh/.stCommitMsg
