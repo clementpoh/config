@@ -1,7 +1,0 @@
-Host mailworks
-    HostName 119.9.20.74
-    user root
-
-Host csse
-    HostName holly.cs.mu.oz.au
-    user cpoh
