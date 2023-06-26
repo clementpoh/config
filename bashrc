@@ -106,14 +106,6 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 shopt -s globstar
 
-# Crow (Android emulator)
-if network-detect | grep -q "On corporate network: yes" ; then
-  source /google/data/ro/teams/mobile_eng_prod/crow/crow-complete.bash
-else
-  echo "Not on a corporate network: skipping Crow autocomplete."
-fi
-alias crow=/google/bin/releases/mobile-devx-platform/crow/crow.par
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
